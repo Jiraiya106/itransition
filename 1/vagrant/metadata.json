@@ -1,0 +1,15 @@
+{
+    "description": "long box description",
+    "short_description": "short box description",
+    "name": "company/developer-environment",
+    "versions": [{
+        "version": "1",
+        "status": "active",
+        "description_html": "<p>Dev Environment</p>",
+        "description_markdown": "Dev Environment",
+        "providers": [{
+            "name": "virtualbox",
+            "url": "./ubuntu-18.04.1.box"
+        }]
+    }]
+}

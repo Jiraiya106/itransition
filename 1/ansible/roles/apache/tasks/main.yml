@@ -1,0 +1,17 @@
+---
+- name: Get OS type
+  debug:
+    var: ansible_facts.distribution
+
+- name: Get OS type
+  debug:
+    var: ansible_user
+#ansible_facts.distribution
+
+
+- name: Update repositories cache and install  package
+  apt:
+    name: apache2
+#    update_cache: yes
+
+

@@ -1,0 +1,13 @@
+FROM ubuntu:20.04
+
+RUN apt update && apt install -y curl g++ gcc autoconf automake bison libc6-dev \
+        libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool \
+        libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev \
+        libreadline-dev libssl-dev
+
+RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDBcurl -sSL \
+    https://get.rvm.io | bash -s stable
+
+CMD source ~/.rvm/scripts/rvm
+
+RUN rvm install ruby-2.7.2rvm --default use ruby-2.7.2 

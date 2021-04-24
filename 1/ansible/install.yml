@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+  - name: Update repositories cache and install  package
+    apt:
+      name: virtualbox
+      update_cache: yes
+
