@@ -1,0 +1,8 @@
+Работа с Mysql
+
+sudo docker images
+sudo docker pull mysql/mysql-server
+sudo docker run -v /home/elisey/itransition/docker/mysql/ mysql/mysql-server
+
+потом я не разобрался как зайти на сервер Mysql и внести изменения,
+пойду дальше потом вернусь и разберусь.

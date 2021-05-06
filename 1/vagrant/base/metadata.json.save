@@ -1,0 +1,15 @@
+{
+    "description": "long box description",
+    "short_description": "short box description",
+    "name": "",
+    "versions": [{
+        "version": "1",
+        "status": "active",
+        "description_html": "<p>Dev Environment</p>",
+        "description_markdown": "Dev Environment",
+        "providers": [{
+            "name": "virtualbox",
+            "url": "./package.box"
+        }]
+    }]
+}

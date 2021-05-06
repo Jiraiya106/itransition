@@ -1,0 +1,7 @@
+path_to_front: /home/geekslore/front
+path_to_home: /home/geekslore
+path_to_swagger: /home/geekslore/swagger
+path_to_www: /var/www/geekslore
+path_to_config: /home/geekslore_setttings
+packer_home: /home/chief/packer/
+vagrant_home: /home/chief/vagrant/

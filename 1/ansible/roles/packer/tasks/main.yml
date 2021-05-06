@@ -1,0 +1,38 @@
+---
+- name: Get OS type
+  debug:
+    var: ansible_facts.distribution
+
+#- name: Remove
+#  file:
+#    path:  '{{ packer_home }}'
+#    state: absent
+
+- name: Create dir
+  file:
+    path:  '{{ packer_home }}'
+    state: directory
+#    owner: flink
+#    group: flink
+#    mode: '0755'
+
+
+- name: Download packer
+  get_url:
+    url: 'https://releases.hashicorp.com/packer/1.7.2/packer_1.7.2_linux_amd64.zip'
+    dest: '/tmp/'
+
+- name: Unarchive 
+#  shell: 'cd {{ packer_home }} '
+  unarchive:
+    src: '/tmp/packer_1.7.2_linux_amd64.zip'
+    dest: '{{ packer_home }}'
+
+- name: add to path
+  lineinfile:
+    dest: '~/.profile'
+    state: present
+    #line: "export PATH=$PATH:/opt/packer/"
+    backrefs: true
+    regexp: 'PATH=(["]*)((?!.*?{{ packer_home }}).*?)(["]*)$'
+    line: 'PATH=\1\2:{{ packer_home }}\3'

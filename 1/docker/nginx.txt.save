@@ -1,0 +1,6 @@
+Как я запускал Nginx
+
+sudo docker images
+sudo docker pull nginx
+sudo docker run -p 80:80 nginx
+

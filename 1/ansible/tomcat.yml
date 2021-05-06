@@ -1,0 +1,5 @@
+---
+- name: Install tomcat
+  hosts: localhost
+  roles:
+    - { role: tomcat }

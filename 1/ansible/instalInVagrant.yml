@@ -1,0 +1,7 @@
+---
+- hosts: vagrant
+  roles:
+    - { role: apache }
+    - { role: java }
+    - { role: mysql }
+    - { role: tomcat }

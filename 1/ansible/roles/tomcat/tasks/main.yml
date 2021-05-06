@@ -1,0 +1,31 @@
+---
+- name: Get OS type
+  debug:
+    var: ansible_facts.distribution
+
+- file:
+    path: /opt/tomcat
+    state: directory
+
+- name: Install Tomcat
+  get_url: 
+    url: https://apache-mirror.rbc.ru/pub/apache/tomcat/tomcat-10/v10.0.5/bin/apache-tomcat-10.0.5.zip
+    dest: /opt/tomcat
+
+- unarchive:
+    src: /opt/tomcat/apache-tomcat-10.0.5.zip
+    dest: /opt/tomcat/
+
+- template:
+    src: tomcat.service
+    dest: /etc/systemd/system/
+    mode: 0755
+
+- systemd:
+    daemon_reload: yes
+
+- systemd:
+    state: started
+    name: tomcat
+
+   
