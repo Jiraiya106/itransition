@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Docker') { 
             steps { 
-                sh 'cd $/var/lib/jenkins/workspace/ && echo FROM nginx > /var/lib/jenkins/workspace/Dockerfile &&'+
+                sh 'cd /var/lib/jenkins/workspace && echo FROM nginx > /var/lib/jenkins/workspace/Dockerfile &&'+
                 "echo COPY `find /var/lib/jenkins/workspace/First/code -type f` /var/www/html >> /var/lib/jenkins/workspace/Dockerfile"
               script{
                 def app = docker.build("test")
