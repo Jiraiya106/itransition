@@ -13,13 +13,15 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Processing') { 
+        stage('Docker') { 
             steps { 
-              script{
-                sh 'env'
-                echo "Message: ${params.message}, Some data: ${params.someData}, build number: #${env.BUILD_NUMBER}"
-                env.setProperty('returnData', "Some data from second job, ${env.BUILD_URL}" )
-              }
+                sh 'cd ${WORKSPACE} && echo FROM nginx > ${WORKSPACE}/Dockerfile &&'+
+                "echo COPY `find ${WORKSPACE}/release -type f` /var/www/html >> ${WORKSPACE}/Dockerfile"
+              // script{
+              //   sh 'env'
+              //   echo "Message: ${params.message}, Some data: ${params.someData}, build number: #${env.BUILD_NUMBER}"
+              //   env.setProperty('returnData', "Some data from second job, ${env.BUILD_URL}" )
+              // }
             }
         }
     }
