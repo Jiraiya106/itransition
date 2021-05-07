@@ -25,6 +25,7 @@ pipeline {
                 sh 'export HOME=${WORKSPACE} &&'+
                 'mkdir -p npm-cache && npm config set prefix "${WORKSPACE}/npm-cache" &&'+
                 'cd ${WORKSPACE}/code && npm install  && npm run build'
+                
             }
               // script{
               //   echo "Message: ${params.message}, build number: ${env.BUILD_NUMBER}"

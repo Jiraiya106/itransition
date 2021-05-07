@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        docker { image 'node:lts-buster-slim' }
-    }
+    agent any
     // parameters{
     //   string(name: 'message', defaultValue: 'Default message', description: 'Some description')
     //   string(name: 'someData', defaultValue: '', description: 'Some input data')
@@ -15,8 +13,8 @@ pipeline {
         }
         stage('Docker') { 
             steps { 
-                sh 'cd /var/lib/jenkins/workspace && echo FROM nginx > /var/lib/jenkins/workspace/Dockerfile &&'+
-                "echo COPY `find /var/lib/jenkins/workspace/First/code -type f` /var/www/html >> /var/lib/jenkins/workspace/Dockerfile"
+                sh 'cd ${WORKSPACE} && echo FROM nginx > ${WORKSPACE}/Dockerfile &&'+
+                "echo COPY `find ${WORKSPACE}/First/code -type f` /var/www/html >> ${WORKSPACE}/Dockerfile"
               script{
                 def app = docker.build("test")
               //   sh 'env'
