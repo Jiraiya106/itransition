@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { 'node:lts-buster-slim' }
+        docker { image 'node:lts-buster-slim' }
     }
     // parameters{
     //   string(name: 'message', defaultValue: 'Default message', description: 'Some description')
