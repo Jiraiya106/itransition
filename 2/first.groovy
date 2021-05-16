@@ -3,7 +3,7 @@ pipeline {
         docker { image 'node:lts-buster-slim' }
     }
     parameters{
-      string(name: 'CODE_REPO', defaultValue: 'git@github.com:Jiraiya106/itransition_jenkins.git', description: 'Some description'),
+      string(name: 'CODE_REPO', defaultValue: 'git@github.com:Jiraiya106/itransition_jenkins.git', description: 'Some description')
       string(name: 'BRANCH', defaultValue: 'staging', description: 'Some description')
     }
     stages {
