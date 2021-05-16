@@ -14,6 +14,42 @@ def secondJobResult
 pipeline {
     agent any
     triggers { pollSCM('* * * * *') } 
+
+      parameters {
+        string(
+			name: 'CODE_REPO',
+			defaultValue: 'git@github.com:Jiraiya106/itransition_jenkins.git',
+			description: 'REPO'
+		)
+		 string(
+			name: 'BRANCH',
+			defaultValue: 'develop',
+			description: 'BRANCH'
+		)
+    booleanParam(
+			name: 'BUILD',
+			defaultValue: true,
+			description: 'Build selected version'
+		)
+		booleanParam(
+			name: 'QG',
+			defaultValue: true,
+			description: 'Run quality gates'
+		)
+		booleanParam(
+			name: 'DOCKER',
+			defaultValue: true,
+			description: 'Build image'
+		)
+
+		booleanParam(
+			name: 'DEPLOY',
+			defaultValue: true,
+			description: 'Deploy from docker'
+		)
+
+    }
+
     stages {
         stage('Init') { 
             steps { 
@@ -25,7 +61,8 @@ pipeline {
             steps {
               script{
                 firstJobResult = runJob('First', [
-                  string(name: 'message', value: 'Hello first JOB from main pipeline')
+                  string(name: 'CODE_REPO', value: '${params.CODE_REPO}'),
+                  string(name: 'BRANCH', value: '${params.BRANCH}')
                 ])
                 if(firstJobResult == false){
                   currentBuild.status = 'FAILURE'
