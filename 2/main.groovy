@@ -12,7 +12,8 @@ def firstJobResult
 def secondJobResult
 
 pipeline {
-    agent any 
+    agent any
+    triggers { pollSCM('* * * * *') } 
     stages {
         stage('Init') { 
             steps { 
