@@ -1,0 +1,10 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+  - name: Ensure NTP (for time synchronization) is installed.
+    yum: name=ntp state=present
+  - name: Ensure NTP is running.
+    service: name=ntpd state=started enabled=yes
+  - name: Play to cron.
+    shell: crontab -e 00 1 * * * /usr/sbin/ntpdate 1.ru.pool.ntp.org  
